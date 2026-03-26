@@ -24,19 +24,22 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      # Add ARM target only for macOS
-      - name: Add macOS ARM target
+      # Add macOS targets (Intel + ARM)
+      - name: Add macOS targets
         if: matrix.os == 'macos-latest'
-        run: rustup target add aarch64-apple-darwin
+        run: |
+          rustup target add x86_64-apple-darwin
+          rustup target add aarch64-apple-darwin
 
       # Build binaries
       - name: Build release
         shell: bash
         run: |
-          cargo build --release
-
           if [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            cargo build --release --target x86_64-apple-darwin
             cargo build --release --target aarch64-apple-darwin
+          else
+            cargo build --release
           fi
 
       # Package per OS
@@ -51,7 +54,7 @@ jobs:
           elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
             # Create universal binary
             lipo -create \
-              target/release/ferrisdex \
+              target/x86_64-apple-darwin/release/ferrisdex \
               target/aarch64-apple-darwin/release/ferrisdex \
               -output dist/ferrisdex
 
