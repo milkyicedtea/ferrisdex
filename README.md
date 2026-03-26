@@ -1,4 +1,4 @@
-# ferrisdex
+# FerrisDex
 
 Small CLI Pokédex app in Rust, inspired by [fastfecth](https://github.com/fastfetch-cli/fastfetch).
 
