@@ -2,6 +2,26 @@
 
 Small CLI Pokédex app in Rust, inspired by [fastfecth](https://github.com/fastfetch-cli/fastfetch).
 
+## Screenshots
+
+<details>
+<summary>Simple usage</summary>
+
+![FerrisDex screenshot](assets/pikachu.png)
+</details>
+
+<details>
+<summary>Shiny</summary>
+
+![FerrisDex screenshot](assets/mew_shiny.png)
+</details>
+
+<details>
+<summary>Sprite (and shiny)</summary>
+
+![FerrisDex screenshot](assets/lunala_shiny_sprite.png)
+</details>
+
 ## CLI Options
 
 | Flag                             | Meaning                                   | Notes                                                            |
